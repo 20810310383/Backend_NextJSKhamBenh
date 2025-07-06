@@ -1,10 +1,12 @@
 const express = require("express");
-const { createPhieuKham, getAllPhieuKham, updatePhieuKham, deletePhieuKham, getPhieuKhamById, uploadFilePhieuKham } = require("../controllers/PhieuKham/phieuKhamController");
+const { createPhieuKham, getAllPhieuKham, updatePhieuKham, deletePhieuKham, getPhieuKhamById, uploadFilePhieuKham, getPhieuKhamByTiepDon } = require("../controllers/PhieuKham/phieuKhamController");
 const { upload } = require("../controllers/Upload/upload");
 const router = express.Router();
 
 router.get("/get-phieu-kham", getAllPhieuKham);
 router.get("/get-phieu-kham/:id", getPhieuKhamById);
+router.get("/by-tiepdon/:tiepDonId", getPhieuKhamByTiepDon);
+
 
 router.post("/create-phieu-kham", createPhieuKham);
 router.put("/update-phieu-kham/:id", updatePhieuKham);

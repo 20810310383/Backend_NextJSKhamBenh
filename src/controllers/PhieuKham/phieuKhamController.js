@@ -159,6 +159,26 @@ exports.getPhieuKhamById = async (req, res) => {
   }
 };
 
+exports.getPhieuKhamByTiepDon = async (req, res) => {
+  try {
+    const tiepDonId = req.params.tiepDonId;
+    const list = await PhieuKham.find({ tiepDon: tiepDonId })
+    .populate({
+      path: "tiepDon",
+      populate: [{ path: "dichVu" }, { path: "bacSi" }],
+    })
+    .sort({ createdAt: 1 });
+    res.json({ data: list });
+  } catch (error) {
+    console.error("Lỗi getPhieuKhamByTiepDon:", error);
+    res.status(500).json({
+      message: "Lỗi server",
+      error: error.message,
+    });
+  }
+};
+
+
 exports.uploadFilePhieuKham = async (req, res) => {
   try {
     const id = req.params.id;
