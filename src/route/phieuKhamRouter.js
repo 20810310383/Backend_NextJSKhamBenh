@@ -1,6 +1,7 @@
 const express = require("express");
 const { createPhieuKham, getAllPhieuKham, updatePhieuKham, deletePhieuKham, getPhieuKhamById, uploadFilePhieuKham, getPhieuKhamByTiepDon } = require("../controllers/PhieuKham/phieuKhamController");
 const { upload } = require("../controllers/Upload/upload");
+const { setPriceAndGenerateQR, markAsPaid } = require("../controllers/PhieuKham/thanhToanThuNganController");
 const router = express.Router();
 
 router.get("/get-phieu-kham", getAllPhieuKham);
@@ -17,6 +18,10 @@ router.post(
   upload.single("file"),
   uploadFilePhieuKham
 );
+
+router.post("/set-price/:id", setPriceAndGenerateQR);
+router.post("/mark-paid/:id", markAsPaid);
+
 
 
 module.exports = router;
