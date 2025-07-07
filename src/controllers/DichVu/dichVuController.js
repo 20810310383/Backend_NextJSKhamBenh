@@ -26,6 +26,7 @@ exports.createDichVu = async (req, res) => {
   const dichvu = new DichVu({
     tenDichVu: req.body.tenDichVu,
     moTa: req.body.moTa,
+    giaTien: req.body.giaTien,
   });
 
   try {
@@ -44,6 +45,8 @@ exports.updateDichVu = async (req, res) => {
 
     if (req.body.tenDichVu != null) dichvu.tenDichVu = req.body.tenDichVu;
     if (req.body.moTa != null) dichvu.moTa = req.body.moTa;
+    if (req.body.giaTien != null) dichvu.giaTien = req.body.giaTien; // ✅ thêm giá tiền
+
 
     const updatedDichVu = await dichvu.save();
     res.json({ message: "Đã cập nhật dịch vụ", data: updatedDichVu });

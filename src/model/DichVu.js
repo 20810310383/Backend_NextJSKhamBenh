@@ -6,7 +6,11 @@ const DichVuSchema = new mongoose.Schema({
   },
   moTa: {
     type: String,
-  }
+  },
+   giaTien: {
+    type: Number,
+    required: true,
+  },
 }, { timestamps: true });
 
 module.exports = mongoose.model("DichVu", DichVuSchema);
