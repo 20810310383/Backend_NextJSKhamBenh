@@ -9,7 +9,6 @@ const DichVuSchema = new mongoose.Schema({
   },
    giaTien: {
     type: Number,
-    required: true,
   },
 }, { timestamps: true });
 

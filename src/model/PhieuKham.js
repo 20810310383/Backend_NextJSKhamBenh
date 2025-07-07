@@ -30,6 +30,51 @@ const PhieuKhamSchema = new mongoose.Schema(
     chanDoanKemTheo: String,
     moTaChiTiet: String,
 
+     // Chẩn đoán trước mổ
+    chanDoanTruocMo: String,
+
+    // Chỉ định phẫu thuật/thủ thuật
+    chiDinhPhauThuat: String,
+
+    // Tên phẫu thuật/thủ thuật
+    tenPhauThuat: String,
+
+    // Phương pháp vô cảm
+    phuongPhapVoCam: String,
+
+    // Thời gian
+    thoiGianBatDau: Date,
+    thoiGianKetThuc: Date,
+
+    // Kíp mổ
+    kipMo: String,
+
+    // Dụng cụ sử dụng (liên kết DungCuSuDung)
+    dungCuSuDung: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "DungCuSuDung",
+      },
+    ],
+
+    // Mô tả quá trình phẫu thuật/thủ thuật
+    moTaQuaTrinh: String,
+
+    // Kết quả/phát hiện trong mổ
+    ketQuaTrongMo: String,
+
+    // Biến chứng
+    bienChung: String,
+
+    // Hướng điều trị sau mổ
+    huongDieuTriSauMo: String,
+
+    // Kết luận
+    ketLuanSauMo: String,
+
+    // Chỉ định điều trị tiếp theo
+    chiDinhDieuTriTiepTheo: String,
+
     // Kết luận
     ketLuan: String,
 
@@ -47,12 +92,17 @@ const PhieuKhamSchema = new mongoose.Schema(
 
     fileKetQua: String,
 
+    // Thông tin thanh toán
     thanhToan: {
       soTien: { type: Number },
-      trangThai: { type: String, enum: ["Chưa thanh toán", "Chờ thanh toán", "Đã thanh toán"], default: "Chưa thanh toán" },
+      trangThai: {
+        type: String,
+        enum: ["Chưa thanh toán", "Chờ thanh toán", "Đã thanh toán"],
+        default: "Chưa thanh toán",
+      },
       ngayXacNhan: Date,
       ngayThanhToan: Date,
-      qrUrl: String
+      qrUrl: String,
     },
   },
   { timestamps: true }

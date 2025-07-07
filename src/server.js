@@ -5,6 +5,7 @@ const bacSiRouter = require('./route/bacSiRouter');
 const dichVuRouter = require('./route/dichVuRouter');
 const tiepDonRouter = require('./route/tiepDonRouter');
 const phieuKhamRouter = require('./route/phieuKhamRouter');
+const dungCuRoutes = require('./route/dungCuRoutes');
 const uploadRouter = require('./route/uploadRouter');
 
 const connectDB = require('./config/connectDB');
@@ -59,6 +60,7 @@ app.use("/api/bacsi", bacSiRouter);
 app.use("/api/dichvu", dichVuRouter);
 app.use("/api/tiepdon", tiepDonRouter);
 app.use("/api/phieukham", phieuKhamRouter);
+app.use("/api/dungcusudung", dungCuRoutes);
 app.use("/api/upload", uploadRouter); // Đặt đường dẫn cho upload
 
 
