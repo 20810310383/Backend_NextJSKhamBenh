@@ -5,7 +5,7 @@ const { setPriceAndGenerateQR, markAsPaid } = require("../controllers/PhieuKham/
 const router = express.Router();
 
 router.get("/get-phieu-kham", getAllPhieuKham);
-router.get("/get-phieu-kham/:id", getPhieuKhamById);
+router.get("/get-phieu-kham-by-id/:id", getPhieuKhamById);
 router.get("/by-tiepdon/:tiepDonId", getPhieuKhamByTiepDon);
 
 
