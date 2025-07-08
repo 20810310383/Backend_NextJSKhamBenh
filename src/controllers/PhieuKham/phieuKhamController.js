@@ -1,3 +1,4 @@
+const DungCuSuDung = require("../../model/DungCuSuDung");
 const PhieuKham = require("../../model/PhieuKham");
 const TiepDon = require("../../model/TiepDon");
 
@@ -64,6 +65,7 @@ exports.getAllPhieuKham = async (req, res) => {
           { path: "bacSi" }
         ]
       })
+      .populate("dungCuSuDung")
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit);
@@ -113,6 +115,15 @@ exports.updatePhieuKham = async (req, res) => {
       await TiepDon.findByIdAndUpdate(updated.tiepDon, {
         trangThai: trangThaiTiepDon,
       });
+    }
+
+     // 3. Trừ tồn kho dụng cụ đã sử dụng (mỗi dụng cụ -1)
+    if (Array.isArray(req.body.dungCuSuDung)) {
+      for (const dungCuId of req.body.dungCuSuDung) {
+        await DungCuSuDung.findByIdAndUpdate(dungCuId, {
+          $inc: { tonKho: -1 },
+        });
+      }
     }
 
     res.json({
