@@ -1,5 +1,5 @@
 const express = require("express");
-const { createPhieuKham, getAllPhieuKham, updatePhieuKham, deletePhieuKham, getPhieuKhamById, uploadFilePhieuKham, getPhieuKhamByTiepDon } = require("../controllers/PhieuKham/phieuKhamController");
+const { createPhieuKham, getAllPhieuKham, updatePhieuKham, deletePhieuKham, getPhieuKhamById, uploadFilePhieuKham, getPhieuKhamByTiepDon, capNhatTrangThaiTT, getDashboardStats } = require("../controllers/PhieuKham/phieuKhamController");
 const { upload } = require("../controllers/Upload/upload");
 const { setPriceAndGenerateQR, markAsPaid } = require("../controllers/PhieuKham/thanhToanThuNganController");
 const router = express.Router();
@@ -22,6 +22,8 @@ router.post(
 router.post("/set-price/:id", setPriceAndGenerateQR);
 router.post("/mark-paid/:id", markAsPaid);
 
+router.put("/update-payment/:id", capNhatTrangThaiTT);
+router.get("/baocao", getDashboardStats);
 
 
 module.exports = router;

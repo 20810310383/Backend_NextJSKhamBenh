@@ -94,17 +94,13 @@ const PhieuKhamSchema = new mongoose.Schema(
 
     // Thông tin thanh toán
     thanhToan: { type: Number },
-    // thanhToan: {
-    //   soTien: { type: Number },
-    //   trangThai: {
-    //     type: String,
-    //     enum: ["Chưa thanh toán", "Chờ thanh toán", "Đã thanh toán"],
-    //     default: "Chưa thanh toán",
-    //   },
-    //   ngayXacNhan: Date,
-    //   ngayThanhToan: Date,
-    //   qrUrl: String,
-    // },
+    
+    trangThaiThanhToan: {
+      type: String,
+      enum: ["Chưa thanh toán", "Đã thanh toán"],
+      default: "Chưa thanh toán",
+    },
+
   },
   { timestamps: true }
 );
